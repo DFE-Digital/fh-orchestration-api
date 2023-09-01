@@ -1,3 +1,4 @@
+using Ardalis.GuardClauses;
 using FamilyHubs.Orchestration.Core.ClientServices;
 using FamilyHubs.Orchestration.Core.Queries.GetReferralsAndServices;
 using FamilyHubs.ReferralService.Shared.Dto;
@@ -46,6 +47,20 @@ namespace FamilyHubs.Orchestration.Api.UnitTests
             result.ReferralDto.Should().BeEquivalentTo(GetReferralDto());
             result.ServiceDto.Should().BeEquivalentTo(GetTestCountyCouncilServicesDto(1));
             result.Account.Email.Should().Be(_referral.ReferralUserAccountDto.EmailAddress);
+        }
+
+        [Fact]
+        public async Task ThenGettingReferral_ReturnsNotFoundException()
+        {
+            //Arrange
+            _mockClientService.Setup(x => x.GetReferralById(It.IsAny<long>()));
+
+            GetReferralByIdWithServiceCommand command = new(1);
+            GetReferralByIdWithServiceCommandHandler handler = new GetReferralByIdWithServiceCommandHandler(_mockClientService.Object);
+
+            // Act 
+            // Assert
+            await Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(command, new CancellationToken()));            
         }
 
         public static ReferralDto GetReferralDto()
