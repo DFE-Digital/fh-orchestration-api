@@ -1,10 +1,12 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace FamilyHubs.Orchestration.Api.Middleware;
 
+[ExcludeFromCodeCoverage]
 internal sealed class ExceptionHandlingMiddleware : IMiddleware
 {
     private readonly ILogger<ExceptionHandlingMiddleware> _logger;

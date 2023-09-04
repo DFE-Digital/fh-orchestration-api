@@ -10,9 +10,11 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Events;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FamilyHubs.Orchestration.Api;
 
+[ExcludeFromCodeCoverage]
 public static class StartupExtensions
 {
     public static void ConfigureHost(this WebApplicationBuilder builder)

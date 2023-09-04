@@ -1,8 +1,8 @@
 using Serilog;
-
+using System.Diagnostics.CodeAnalysis;
 
 namespace FamilyHubs.Orchestration.Api;
-
+[ExcludeFromCodeCoverage]
 public class Program
 {
     protected Program() { }
