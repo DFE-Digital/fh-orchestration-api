@@ -74,7 +74,7 @@ public class ClientService : IClientService
         var json = await response.Content.ReadAsStringAsync();
         if (string.IsNullOrEmpty(json))
         {
-            throw new ArgumentException("Invalid response from Referral Api");
+            throw new ArgumentException("Invalid response from Idams Api");
         }
 
         return JsonSerializer.Deserialize<Account>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
