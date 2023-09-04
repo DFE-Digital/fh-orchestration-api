@@ -20,7 +20,7 @@ namespace FamilyHubs.Orchestration.Api.UnitTests
             _mockClientService = new Mock<IClientService>();
             _referral = GetReferralDto();
             _mockClientService.Setup(x => x.GetServiceById(It.IsAny<long>())).ReturnsAsync(GetTestCountyCouncilServicesDto(1));
-            _mockClientService.Setup(x => x.GetAccountByEmail(It.IsAny<string>())).ReturnsAsync(new Idam.Data.Entities.Account
+            _mockClientService.Setup(x => x.GetAccountById(It.IsAny<long>())).ReturnsAsync(new Idam.Data.Entities.Account
             {
                 Id = 1,
                 Email = _referral.ReferralUserAccountDto.EmailAddress,

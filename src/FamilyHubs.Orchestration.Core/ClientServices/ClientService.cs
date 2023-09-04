@@ -8,7 +8,7 @@ public interface IClientService
 {
     Task<ReferralDto?> GetReferralById(long id);
     Task<ServiceDirectory.Shared.Dto.ServiceDto?> GetServiceById(long id);
-    Task<Account?> GetAccountByEmail(string email);
+    Task<Account?> GetAccountById(long id);
 
 
 }
@@ -61,12 +61,12 @@ public class ClientService : IClientService
 
     }
 
-    public async Task<Account?> GetAccountByEmail(string email)
+    public async Task<Account?> GetAccountById(long id)
     {
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Get,
-            RequestUri = new Uri(_httpClient.BaseAddress + $"api/account/{email}")
+            RequestUri = new Uri(_httpClient.BaseAddress + $"api/account/{id}")
         };
 
         using var response = await _httpClient.SendAsync(request);

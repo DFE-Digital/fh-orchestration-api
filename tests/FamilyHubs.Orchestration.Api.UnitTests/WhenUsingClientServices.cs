@@ -93,7 +93,7 @@ public class WhenUsingClientServices : BaseClientService
         var clientService = new ClientService(mockClient);
 
         //Act
-        var result = await clientService.GetAccountByEmail(account.Email);
+        var result = await clientService.GetAccountById(1);
 
         //Assert
         result.Should().NotBeNull();
@@ -108,7 +108,7 @@ public class WhenUsingClientServices : BaseClientService
         var clientService = new ClientService(mockClient);
 
         //Act
-        Func<Task> act = async () => await clientService.GetAccountByEmail("");
+        Func<Task> act = async () => await clientService.GetAccountById(-1);
 
 
         //Assert

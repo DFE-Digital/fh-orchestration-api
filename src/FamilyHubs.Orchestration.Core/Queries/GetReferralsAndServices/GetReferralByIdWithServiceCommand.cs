@@ -34,7 +34,7 @@ public class GetReferralByIdWithServiceCommandHandler : IRequestHandler<GetRefer
         }
 
         var serviceCall = _clientService.GetServiceById(referral.ReferralServiceDto.Id);
-        var accountCall = _clientService.GetAccountByEmail(referral.ReferralUserAccountDto.EmailAddress);
+        var accountCall = _clientService.GetAccountById(referral.ReferralUserAccountDto.Id);
 
         await Task.WhenAll(serviceCall, accountCall);
 
